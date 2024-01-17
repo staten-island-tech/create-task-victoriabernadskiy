@@ -20,17 +20,17 @@ getData(URL); */
 //or
 
 
-const url = `https:///api/fruit/all`;
+const url = `https://217.160.142.194.api/fruit/all`;
 
 async function fetchAsync (url) {
     let response = await fetch(url);
     let data = await response.json();
     return data;
   }
+console.log(url)
 
 
-
-  const URL4 = `https:///api/fruit/all`;
+  const URL4 = `https://api/fruit/all`;
     const FetchURL = async (request) => {
   try {
     const response = await fetch(`${request}`)
