@@ -19,7 +19,7 @@ getData(URL); */
 
 //or
 
-
+/* 
 const url = `https://217.160.142.194.api/fruit/all`;
 
 async function fetchAsync (url) {
@@ -27,10 +27,15 @@ async function fetchAsync (url) {
     let data = await response.json();
     return data;
   }
-console.log(url)
+console.log(url) */
 
 
-  const URL4 = `https://api/fruit/all`;
+
+
+
+// use GET
+
+  const URL = `https://www.fruityvice.com/api/fruit/all`;
     const FetchURL = async (request) => {
   try {
     const response = await fetch(`${request}`)
@@ -40,4 +45,17 @@ console.log(url)
   } catch (error) {
     console.log(error)
   }
+}
+
+FetchURL()
+
+const plate = []
+
+
+const DOMSelectors = {
+  card_holder: document.getElementById("card_holder"),
+  card: document.querySelector("card"),
+  fruitName: document.querySelector("fruitName"),
+  genus: document.querySelector("genus"),
+  nutrition: document.querySelector("nutrition")
 }
