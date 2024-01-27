@@ -17,8 +17,8 @@ const FetchURL = async (request) => {
 }
 
 async function load() {
-  const nasadata = await FetchURL(`${url}${api_key}`)
-  Insert(nasadata)
+  const foodData = await FetchURL(`${url}${api_key}`)
+  Insert(foodData)
 }
 
 load()
