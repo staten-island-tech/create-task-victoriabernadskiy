@@ -24,10 +24,10 @@ const books = [
 ];
 
 
-const getRandomItem = array => array[Math.floor(Math.random() * array.length)];
+const RandomItem = array => array[Math.floor(Math.random() * array.length)];
 
 function displayRandomSynopsis(bookArray) {
-    const randomBook = getRandomItem(bookArray);
+    const randomBook = RandomItem(bookArray);
     const correctTitle = randomBook.title
     DOMselectors.cardHolder.insertAdjacentHTML('afterbegin', 
     `   <div id="bookCard">
@@ -35,15 +35,27 @@ function displayRandomSynopsis(bookArray) {
     <h2 class="synopsis">${randomBook.synopsis}</h2>
   </div>`)
     
-    const titleOptions = [correctTitle, getRandomItem(bookArray).title, getRandomItem(bookArray).title, getRandomItem(bookArray).title]
+  const RandomTitle = RandomItem(bookArray.title)
+
+    const titleOptions = [correctTitle, RandomTitle, RandomTitle, RandomTitle]
     titleOptions.forEach(title => {
-        btn.textContent = title;
-        btn.addEventListener('click', () => checkAnswer(title, randomBook.title));
-        DOMselectors.cardHolder.appendChild(btn);
+        DOMselectors.btn.textContent = title;
+        DOMselectors.btn.addEventListener('click', (event) => 
+          checkAnswer(title, randomBook.title));
+        DOMselectors.cardHolder.appendChild(btn1, btn2, btn3, btn4);
     });
     
-
 }
 
+
+
+function checkAnswer () {
+    if (RandomTitle !== correctTitle) {
+      titleOptions.push(RandomTitle)
+    }
+    else {
+      
+    }
+}
 
 // fn start question title = 
