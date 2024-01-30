@@ -1,4 +1,9 @@
-
+DOMselectors = {
+  bookCard: document.getElementById("bookCard"),
+  synopsis: document.querySelector("synopsis"),
+  cardHolder: document.getElementById("cardHolder"),
+  btn: document.getElementById("btn")
+}
 
 const books = [
   {"title": "To Kill a Mockingbird", "author": "Harper Lee", "synopsis": "Set in the 1930s, this classic novel explores racial injustice in the American South through the eyes of young Scout Finch."},
@@ -18,52 +23,27 @@ const books = [
   {"title": "Educated", "author": "Tara Westover", "synopsis": "Tara's memoir recounts her journey from growing up in a strict and abusive household in rural Idaho to earning a PhD through self-education and perseverance."},
 ];
 
-function getRandomSynopsis() {
-  return books[Math.floor(Math.random() * books.length)].synopsis;
+
+const getRandomItem = array => array[Math.floor(Math.random() * array.length)];
+
+function displayRandomSynopsis(bookArray) {
+    const randomBook = getRandomItem(bookArray);
+    const correctTitle = randomBook.title
+    DOMselectors.cardHolder.insertAdjacentHTML('afterbegin', 
+    `   <div id="bookCard">
+    <h1>Guess the Book</h1>
+    <h2 class="synopsis">${randomBook.synopsis}</h2>
+  </div>`)
+    
+    const titleOptions = [correctTitle, getRandomItem(bookArray).title, getRandomItem(bookArray).title, getRandomItem(bookArray).title]
+    titleOptions.forEach(title => {
+        btn.textContent = title;
+        btn.addEventListener('click', () => checkAnswer(title, randomBook.title));
+        DOMselectors.cardHolder.appendChild(btn);
+    });
+    
+
 }
 
-function getAnswerChoices(correctTitle, allTitles) {
-  const choices = [correctTitle];
-  while (choices.length < 4) {
-      const randomTitle = allTitles[Math.floor(Math.random() * allTitles.length)];
-      if (randomTitle !== correctTitle && !choices.includes(randomTitle)) {
-          choices.push(randomTitle);
-      }
-  }
-  return choices;
-}
 
-function displayChoices(choices) {
-  const choicesContainer = document.getElementById('choices');
-  choicesContainer.innerHTML = '';
-  choices.forEach((choice, index) => {
-      const button = document.createElement('button');
-      button.textContent = `${index + 1}. ${choice}`;
-      button.addEventListener('click', () => checkAnswer(choice));
-      choicesContainer.appendChild(button);
-  });
-}
-
-function playGame() {
-  const correctSynopsis = getRandomSynopsis();
-  const correctBook = books.find(book => book.synopsis === correctSynopsis).title;
-  const allBookTitles = books.map(book => book.title);
-
-  document.getElementById('synopsis').textContent = `Guess the book based on the synopsis:\n\n${correctSynopsis}`;
-  const answerChoices = getAnswerChoices(correctBook, allBookTitles);
-  displayChoices(answerChoices);
-}
-
-function checkAnswer(selectedTitle) {
-  const resultContainer = document.getElementById('result');
-  const correctBook = books.find(book => book.synopsis === document.getElementById('synopsis').textContent.split('\n\n')[1]).title;
-
-  if (selectedTitle === correctBook) {
-      resultContainer.textContent = 'Congratulations! That\'s correct.';
-  } else {
-      resultContainer.textContent = `Sorry, the correct answer is: ${correctBook}`;
-  }
-}
-
-// Start the game when the page loads
-document.addEventListener('DOMContentLoaded', playGame);
+// fn start question title = 
