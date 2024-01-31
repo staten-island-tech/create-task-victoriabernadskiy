@@ -2,7 +2,12 @@ DOMselectors = {
   bookCard: document.getElementById("bookCard"),
   synopsis: document.querySelector("synopsis"),
   cardHolder: document.getElementById("cardHolder"),
-  btn: document.getElementById("btn")
+  btn1: document.getElementById("btn1"),
+  btn2: document.getElementById("btn2"),
+  btn3: document.getElementById("btn3"),
+  btn4: document.getElementById("btn4"),
+  result: document.getElementById("result"),
+  btns: document.querySelectorAll(".btn")
 }
 
 const books = [
@@ -24,10 +29,24 @@ const books = [
 ];
 
 
-const RandomItem = array => array[Math.floor(Math.random() * array.length)];
+const RandomItem = (book) => {
+  const random = Math.floor(Math.random() * book.length);
+  return book[random];
+};
 
-function displayRandomSynopsis(bookArray) {
-    const randomBook = RandomItem(bookArray);
+function resetGame() {
+  // Clear previous content in cardHolder and result
+  DOMselectors.cardHolder.innerHTML = '';
+  result.textContent = '';
+
+  // Call displayRandomSynopsis to show a new card
+  displayRandomSynopsis();
+}
+
+
+
+function displayRandomSynopsis() {
+    const randomBook = RandomItem(books);
     const correctTitle = randomBook.title
     DOMselectors.cardHolder.insertAdjacentHTML('afterbegin', 
     `   <div id="bookCard">
@@ -35,27 +54,23 @@ function displayRandomSynopsis(bookArray) {
     <h2 class="synopsis">${randomBook.synopsis}</h2>
   </div>`)
     
-  const RandomTitle = RandomItem(bookArray.title)
+  const RandomTitle = RandomItem(books).title
 
-    const titleOptions = [correctTitle, RandomTitle, RandomTitle, RandomTitle]
-    titleOptions.forEach(title => {
-        DOMselectors.btn.textContent = title;
-        DOMselectors.btn.addEventListener('click', (event) => 
-          checkAnswer(title, randomBook.title));
-        DOMselectors.cardHolder.appendChild(btn1, btn2, btn3, btn4);
+    const titleOptions = [correctTitle, RandomItem(books).title, RandomItem(books).title, RandomItem(books).title]
+    titleOptions.forEach((title, index) => {
+        DOMselectors.btns[index].textContent = title;
+        DOMselectors.btns[index].addEventListener('click', (event) => 
+        {
+          if (event.target.textContent === correctTitle) {
+              result.textContent = 'Correct! Well done.';
+          } else {
+              result.textContent = `Incorrect. The correct title is: ${correctTitle}. Refresh to play again`;
+          }
+        }
+        )
     });
     
 }
 
-
-
-function checkAnswer () {
-    if (RandomTitle !== correctTitle) {
-      titleOptions.push(RandomTitle)
-    }
-    else {
-      
-    }
-}
-
+displayRandomSynopsis()
 // fn start question title = 
