@@ -35,11 +35,8 @@ const RandomItem = (book) => {
 };
 
 function resetGame() {
-  // Clear previous content in cardHolder and result
   DOMselectors.cardHolder.innerHTML = '';
   result.textContent = '';
-
-  // Call displayRandomSynopsis to show a new card
   displayRandomSynopsis();
 }
 
@@ -50,7 +47,7 @@ function displayRandomSynopsis() {
     const correctTitle = randomBook.title
     DOMselectors.cardHolder.insertAdjacentHTML('afterbegin', 
     `   <div id="bookCard">
-    <h1>Guess the Book</h1>
+    <h1 id="header">Guess the Book</h1>
     <h2 class="synopsis">${randomBook.synopsis}</h2>
   </div>`)
     
@@ -62,7 +59,7 @@ function displayRandomSynopsis() {
         DOMselectors.btns[index].addEventListener('click', (event) => 
         {
           if (event.target.textContent === correctTitle) {
-              result.textContent = 'Correct! Well done.';
+              result.textContent = 'Correct! Well done. Refresh to play again';
           } else {
               result.textContent = `Incorrect. The correct title is: ${correctTitle}. Refresh to play again`;
           }
@@ -73,4 +70,9 @@ function displayRandomSynopsis() {
 }
 
 displayRandomSynopsis()
-// fn start question title = 
+
+document.querySelector("#restart").addEventListener("click", function () {
+  DOMselectors.cardHolder.innerHTML = '';
+  result.textContent = '';
+  displayRandomSynopsis();
+});

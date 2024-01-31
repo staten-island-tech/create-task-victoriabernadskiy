@@ -1,3 +1,52 @@
-#cardHolder {
-    background-color: aquamarine;
+body {
+    background-color: rgb(147, 199, 156);
+}
+
+#header {
+   align-items: center; 
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   background-color: aliceblue;
+}
+
+.btn {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+    color: rgb(19, 14, 51);
+    justify-content: center;
+    margin: auto;
+    display: flex;
+    font-size: 15px;
+    font-weight: bold;
+    border: 3px solid rgb(19, 14, 51);
+  }
+
+.synopsis {
+    color: rgb(13, 41, 20);
+    align-items: center; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+#result {
+    align-items: center; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+#restart {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    width: 100px;
+    padding: 15px;
+    color: rgb(19, 14, 51);
+    position: relative;
+    font-size: 15px;
+    font-weight: bold;
+    border: 2px solid rgb(43, 90, 151);
 }
