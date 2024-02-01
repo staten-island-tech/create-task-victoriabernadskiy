@@ -8,6 +8,9 @@ body {
    flex-direction: column;
    justify-content: center;
    background-color: aliceblue;
+   padding: 20px;
+   font-weight: bold;
+   color: rgb(26, 32, 15);
 }
 
 .btn {
@@ -30,6 +33,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 30px;
   }
 
 #result {
@@ -37,6 +41,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 40px
   }
 
 #restart {
@@ -45,7 +52,10 @@ body {
     width: 100px;
     padding: 15px;
     color: rgb(19, 14, 51);
-    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    display: flex;
     font-size: 15px;
     font-weight: bold;
     border: 2px solid rgb(43, 90, 151);

@@ -59,9 +59,9 @@ function displayRandomSynopsis() {
         DOMselectors.btns[index].addEventListener('click', (event) => 
         {
           if (event.target.textContent === correctTitle) {
-              result.textContent = 'Correct! Well done. Refresh to play again';
+              result.textContent = 'Correct! Well done.';
           } else {
-              result.textContent = `Incorrect. The correct title is: ${correctTitle}. Refresh to play again`;
+              result.textContent = `Incorrect. The correct title is: ${correctTitle}.`;
           }
         }
         )
